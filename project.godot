@@ -8,16 +8,42 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Box",
+"language": "GDScript",
+"path": "res://data/assets/props/Box.gd"
+}, {
+"base": "CanvasModulate",
+"class": "DayNightCycle",
+"language": "GDScript",
+"path": "res://data/levels/CanvasModulate.gd"
+}, {
+"base": "Box",
+"class": "PhysicsBox",
+"language": "GDScript",
+"path": "res://data/assets/props/PhysicsBox.gd"
+} ]
+_global_script_class_icons={
+"Box": "",
+"DayNightCycle": "",
+"PhysicsBox": ""
+}
+
 [application]
 
 config/name="Inside The Dark"
-run/main_scene="res://data/levels/Test.tscn"
+run/main_scene="res://data/levels/Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+PlayerStats="*res://data/characters/player/PlayerStats.tscn"
 
 [display]
 
-window/size/width=320
-window/size/height=180
+window/size/width=448
+window/size/height=251
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"

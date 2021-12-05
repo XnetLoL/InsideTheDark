@@ -1,7 +1,7 @@
 [gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://data/characters/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Entities/World/Overlap/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://data/tools/Overlap/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://data/characters/player/Player.png" type="Texture" id=3]
 [ext_resource path="res://data/assets/light/lantern.tscn" type="PackedScene" id=4]
 [ext_resource path="res://data/assets/magic/Shield.png" type="Texture" id=5]
@@ -463,7 +463,7 @@ position = Vector2( -0.5, -4 )
 position = Vector2( 0, -4 )
 texture = ExtResource( 3 )
 hframes = 60
-frame = 27
+frame = 37
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
@@ -493,13 +493,13 @@ parameters/Idle/blend_position = Vector2( 0, 1.1 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
+rotation = 1.5708
 
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource( 2 )]
 position = Vector2( 15, 0 )
 
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 shape = SubResource( 35 )
-disabled = true
 
 [node name="Lantern" parent="." instance=ExtResource( 4 )]
 range_item_cull_mask = 7
