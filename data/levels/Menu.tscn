@@ -4,6 +4,7 @@
 [ext_resource path="res://data/assets/Music and Sounds/270401__littlerobotsoundfactory__menu-select-00.wav" type="AudioStream" id=2]
 
 [node name="Menu" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )

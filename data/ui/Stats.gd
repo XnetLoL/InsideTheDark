@@ -8,7 +8,9 @@ signal max_health_changed(value)
 signal health_changed(value)
 
 func _ready():
-	self.health = max_health
+	set_max_health(max_health)
+	set_health(max_health)
+	#self.health = max_health
 
 func set_max_health(value):
 	max_health = value

@@ -4,7 +4,7 @@ const ACCELERATION = 500
 const MAX_SPEED = 80
 const FRICTION = 300
 
-var push_speed : = 70
+var push_speed : = 40
 
 enum {
 	MOVE,
@@ -16,6 +16,7 @@ var state = MOVE
 var velocity = Vector2.ZERO
 var stats = PlayerStats
 var angles = false
+var cinematic_mode = false
 
 var torch = false
 
@@ -42,8 +43,11 @@ func _physics_process(delta):
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	if !cinematic_mode:
+		input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	else:
+		input_vector = cinematic_mode
 	
 	var speed = MAX_SPEED
 	
@@ -103,6 +107,9 @@ func attack_animation_finished():
 	state = MOVE
 	if torch:
 		$Fire.visible = true
+
+func set_cinematic_mode(value):
+	cinematic_mode = value
 
 func _on_Hurtbox_area_entered(area):
 	print(area.get_name())

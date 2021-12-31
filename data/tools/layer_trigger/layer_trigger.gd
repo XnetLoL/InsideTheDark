@@ -7,8 +7,8 @@ var light_value = 0
 var player_moving = 0 #TODO: change it to a boolean
 
 func _ready():
-	layer1 = get_node(layer1)
-	layer2 = get_node(layer2)
+	layer1 = get_node_or_null(layer1)
+	layer2 = get_node_or_null(layer2)
 
 
 func _on_LowerTrigger_body_entered(body):
@@ -49,7 +49,6 @@ func update_layer(body, layer):
 	
 	if layer != body.get_parent():
 		player_moving = 2
-		print(value)
 		light_value = value
 		body.get_parent().remove_child(body)
 		layer.call_deferred("add_child", body)
@@ -60,8 +59,7 @@ func _on_TriggerMask_body_exited(body):
 	if player_moving > 0:
 		player_moving -= 1
 		return 
-	print("changing")
-	print(light_value)
+		
 	if body.has_node("Sprite"):
 		body.get_node("Sprite").set_light_mask(light_value)
 	if body.has_node("Lantern"):
