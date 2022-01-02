@@ -1,0 +1,19 @@
+{
+	"events": [
+		{
+			"character": "character-1640230993.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "L'estatua d'una monja... . \nEs pot llegir: \"Són 4 les flames que m'iluminaven...\".\nUna flama per cada torre que la rodeja, té sentit. Les haig de buscar i retornar!"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.2
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1640914550.json",
+		"name": "Statue-NO"
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"events": [
+		{
+			"character": "character-1640230993.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Bé, aquí comença l'aventura!"
+		},
+		{
+			"character": "character-1640230993.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hauria de seguir el camí per arribar a les ruines..."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.2
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1640231005.json",
+		"name": "NPC-1"
+	}
+}

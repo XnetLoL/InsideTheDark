@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://data/assets/tilesets/TX Plant.png" type="Texture" id=1]
+[ext_resource path="res://data/assets/nature/trees/Tree.tres" type="Material" id=2]
+[ext_resource path="res://data/assets/materials/wind_shader.tres" type="Material" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0);
+uniform float maxStrength : hint_range(0.0, 1.0);
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset = 0.0;
+
+float getWind(vec2 vertex, vec2 uv, float timer){
+	vec2 pos = mix(vec2(1.0), vertex, distortion).xy;
+	float time = timer * speed + pos.x * pos.y;
+	float diff = pow(maxStrength - minStrength, 2.0);
+	float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+	float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+	
+	return wind;
+	}
+
+void vertex() {
+	VERTEX.x += getWind(VERTEX.xy, UV, TIME);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/speed = 0.77
+shader_param/minStrength = 0.1
+shader_param/maxStrength = 0.24
+shader_param/strengthScale = 100.0
+shader_param/interval = 1.115
+shader_param/detail = 4.0
+shader_param/distortion = 0.06
+shader_param/heightOffset = 0.783
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 5.09467
+height = 8.56138
+
+[node name="Tree" type="StaticBody2D"]
+material = ExtResource( 2 )
+
+[node name="Bottom" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 0.840897, -34.0167 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 24, 80, 112, 72 )
+
+[node name="Top" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 0, -105 )
+z_index = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 20, 10, 120, 70 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.33371, -6.74745 )
+shape = SubResource( 3 )

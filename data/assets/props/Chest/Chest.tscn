@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://data/assets/tilesets/TX Props.png" type="Texture" id=1]
+[ext_resource path="res://data/assets/props/Chest/Chest.gd" type="Script" id=2]
+[ext_resource path="res://data/ui/Inventory/ItemDrop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://data/ui/Ore & Gem/Crystal.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 10 )
+
+[node name="Chest" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Closed" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 28, 32, 36 )
+
+[node name="Opened" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -10 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 72, 32, 56 )
+
+[node name="ItemDrop" parent="Opened" instance=ExtResource( 3 )]
+item_name = "Relic"
+
+[node name="Sprite" parent="Opened/ItemDrop" index="0"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" parent="Opened/ItemDrop" index="2"]
+disabled = true
+
+[node name="TextureRect" parent="Opened/ItemDrop/Item" index="0"]
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, 6 )
+shape = SubResource( 1 )
+
+[editable path="Opened/ItemDrop"]
+[editable path="Opened/ItemDrop/Item"]
