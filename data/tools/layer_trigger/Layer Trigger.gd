@@ -17,7 +17,6 @@ func _ready():
 func _on_Layer_Trigger_body_entered(body):
 	if body is TileMap or get_parent() == body.get_parent():
 		return
-	print(body.get_name() + "has entered")
 	body.set_collision_layer(pow(2, layer))
 	body.set_collision_mask(pow(2, layer))
 	body.get_node("Sprite").set_light_mask(pow(2, layer))
@@ -35,4 +34,3 @@ func _on_Layer_Trigger_body_entered(body):
 func _on_Layer_Trigger_body_exited(body):
 	if body is TileMap or get_parent() == body.get_parent():
 		return
-	print(body.get_name() + "has exited")

@@ -21,4 +21,6 @@ func _ready():
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://data/levels/Test.tscn")
+	get_tree().paused = false
+	PlayerStats.set_health(PlayerStats.max_health)
+	get_tree().reload_current_scene()#change_scene("res://data/levels/Test.tscn")

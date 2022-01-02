@@ -11,7 +11,6 @@ func _on_AnimatedSprite_animation_finished():
 func _on_Hurtbox_area_entered(area):
 	
 	if area.get_name() != "SwordHitbox":
-		print(area.get_name())
 		return
 	
 	$Sprite.visible = false

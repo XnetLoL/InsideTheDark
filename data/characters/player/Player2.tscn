@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://data/characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://data/tools/Overlap/Hitbox.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://data/assets/Music and Sounds/Swipe.wav" type="AudioStream" id=9]
 [ext_resource path="res://data/assets/materials/white_color_shader.gdshader" type="Shader" id=10]
 [ext_resource path="res://data/assets/Music and Sounds/270414__littlerobotsoundfactory__footstep-dirt-01.wav" type="AudioStream" id=11]
+[ext_resource path="res://data/characters/player/PickupZone.gd" type="Script" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 10 )
@@ -776,6 +777,9 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="RectangleShape2D" id=48]
+extents = Vector2( 24, 24 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -880,9 +884,19 @@ anims/Stop = SubResource( 47 )
 stream = ExtResource( 11 )
 volume_db = -16.0
 
+[node name="PickupZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupZone"]
+shape = SubResource( 48 )
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
+[connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]
+[connection signal="body_exited" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_exited"]
 
 [editable path="HitboxPivot/SwordHitbox"]
 [editable path="Hurtbox"]

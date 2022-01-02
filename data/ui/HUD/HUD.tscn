@@ -41,11 +41,13 @@ __meta__ = {
 margin_left = 368.0
 margin_top = 40.0
 margin_right = 464.0
-margin_bottom = 80.0
+margin_bottom = 107.0
 custom_fonts/font = SubResource( 1 )
 text = "MOVE: WASD
 ATTACK: SPACE
-TORCH: F"
+TORCH: F
+INVENTORY: I
+INTERACT: E"
 __meta__ = {
 "_edit_use_anchors_": false
 }

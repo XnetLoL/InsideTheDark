@@ -2,19 +2,33 @@
 	"events": [
 		{
 			"event_id": "dialogic_024",
+			"set_theme": "theme-1641044151.cfg"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "La nostra protagonista decideix anar de viatge a una zona forestal de la qual s'expliquen rumors i mites, històries de fetilleria i malediccions relacionades amb els temples i les relíquies dels somnis, objectes que molts han intentat trobar sense èxit.[br][br](Continua amb la tecla 'E')\nPerò tot són contes i conspiracions, oi?[br][br](Continua amb la tecla 'E')"
+		},
+		{
+			"event_id": "dialogic_024",
 			"set_theme": "theme-1640661549.cfg"
 		},
 		{
 			"character": "character-1639788109.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "So the story begins... And lorem ipsum dorime, interimo adapare dorime, ameno ameno, latire, latiremo, dorime!"
+			"text": "Estimat diari,[br]Ja fa temps que vaig decidir trencar amb la vida quotidiana i aventurar-me al desconegut.[br]Avui, per fi, podré complir aquest desig, perquè començo el meu viatge amb moltes ganes.[br][br](Continua amb la tecla 'E')"
 		},
 		{
-			"character": "",
+			"character": "character-1639788109.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Tokkuh hyt... Gtefgg buiiolfe htfd. Tokkuh hyt... Gtefgg buiiolfe htfd. Tokkuh hyt... Gtefgg buiiolfe htfd. Tokkuh hyt... Gtefgg buiiolfe htfd. "
+			"text": "El primer destí són les ruïnes conegudes pel nom \"El repòs de la flama\", es diu que aquí es troba la primera relíquia.[br]Desitja'm sort![br][br](Continua amb la tecla 'E')"
+		},
+		{
+			"change_scene": "res://data/levels/LevelA1.tscn",
+			"event_id": "dialogic_041"
 		}
 	],
 	"metadata": {

@@ -12,6 +12,8 @@ enum {
 	ATTACK
 }
 
+export(NodePath) var inventory
+
 var state = MOVE
 var velocity = Vector2.ZERO
 var stats = PlayerStats
@@ -29,6 +31,7 @@ onready var hurtbox = $Hurtbox
 func _ready():
 	stats.connect("no_health", self, "queue_free")
 	animationTree.active = true
+	inventory = get_node_or_null(inventory)
 
 func _physics_process(delta):
 	
@@ -111,8 +114,16 @@ func attack_animation_finished():
 func set_cinematic_mode(value):
 	cinematic_mode = value
 
+func _input(event):
+	if event.is_action_pressed("pickup"):
+		if $PickupZone.items_in_range.size() > 0:
+			var pickup_item = $PickupZone.items_in_range.values()[0]
+			pickup_item.pick_up_item(self)
+			$PickupZone.items_in_range.erase(pickup_item)
+			if inventory != null:
+				inventory.add_item(pickup_item.get_item())
+
 func _on_Hurtbox_area_entered(area):
-	print(area.get_name())
 	if area.get_name() != "EnemyHitbox":
 		return
 	stats.health -= 1
