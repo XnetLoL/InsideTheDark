@@ -2729,11 +2729,11 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -6 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=196]
-extents = Vector2( 16, 12 )
-
 [sub_resource type="RectangleShape2D" id=195]
 extents = Vector2( 28, 16 )
+
+[sub_resource type="RectangleShape2D" id=196]
+extents = Vector2( 16, 12 )
 
 [sub_resource type="Environment" id=197]
 background_mode = 4
@@ -2805,7 +2805,7 @@ position = Vector2( 704, -118 )
 [node name="YSort" type="YSort" parent="Layer 1"]
 
 [node name="Player" parent="Layer 1/YSort" instance=ExtResource( 8 )]
-position = Vector2( -1556, 1356 )
+position = Vector2( -1764, 1356 )
 scale = Vector2( 0.8, 0.8 )
 inventory = NodePath("../../../CanvasLayer/Inventory")
 
@@ -3334,10 +3334,6 @@ anims/Float = SubResource( 194 )
 [node name="TextureRect" parent="Layer 2/YSort/Orbs/Orb5/Item" index="0"]
 texture = ExtResource( 36 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Layer 2"]
-position = Vector2( 416, -288 )
-shape = SubResource( 196 )
-
 [node name="Layer 3" type="Node2D" parent="."]
 
 [node name="Layer 3 - Grass" type="TileMap" parent="Layer 3"]
@@ -3420,6 +3416,9 @@ z_index = 2
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 29 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layer 3/StatuePillars/StatuePillar"]
+shape = SubResource( 196 )
 
 [node name="Orb" parent="Layer 3/StatuePillars/StatuePillar" instance=ExtResource( 12 )]
 visible = false
@@ -3538,7 +3537,7 @@ visible = false
 position = Vector2( 140, 44 )
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( -1556, 1349.6 )
+position = Vector2( -1764, 1349.6 )
 scale = Vector2( 2, 2 )
 current = true
 smoothing_enabled = true
